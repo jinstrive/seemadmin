@@ -65,7 +65,7 @@ class CdnMediaAdmin(admin.ModelAdmin):
                     format(op_id=int(request.user.id),
                            name=str(time.time()).replace('.', ''),
                            suffix=name_suffix)
-                obj.url = qiniu_upload(obj.image.read(), 'seemtest', save_path)
+                obj.url = qiniu_upload(obj.image.read(), 'seem', save_path)
                 try:  # 防止不能识别的文件格式导致 pillow 的 decoder error
                     obj.width = obj.image.width
                     obj.height = obj.image.height
