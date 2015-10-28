@@ -137,9 +137,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # 图片处理
-PREFIX_PIC_URL = "http://7xnlkv.com1.z0.glb.clouddn.com"
-QINIU_ACCESS_KEY = 'PrQewmUAVLk9Uhn4fQI00P8smWlg4KuiF3XVbmzq'
-QINIU_SECRET_KEY = 'KOlsmA10-zKUnU2uwFDSl-Sn1OCKrFp15cZW7ysD'
+PREFIX_PIC_URL = "7xnvhf.com1.z0.glb.clouddn.com"
+QINIU_ACCESS_KEY = 's306sluRQe4-8xUq5q4PxP7akVtnhNyeQ6F80vt2'
+QINIU_SECRET_KEY = 'tbfwepbG0Dh5wH5NDj5vuPByG8-zcjbiPq7ure8b'
 
 
 MEDIA_URL = '/uploads/'
