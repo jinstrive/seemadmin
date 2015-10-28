@@ -38,6 +38,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'sorl.thumbnail',
+
+    # 'tinymce',
+    # 'mce_filebrowser',
 
     'apps.seems',
 )
@@ -99,6 +103,20 @@ DATABASES = {
 
 DATABASE_ROUTERS = ['db_router.SeemRouter']
 
+TINYMCE_DEFAULT_CONFIG = {
+  'file_browser_callback': 'mce_filebrowser'
+}
+
+# URL_FILEBROWSER_MEDIA = '/admin-media/filebrowser/'
+# FILEBROWSER_URL_TINYMCE = '/media/tinymce/jscripts/tiny_mce/'
+#
+# TINYMCE_DEFAULT_CONFIG = {
+#     'plugins': "table,spellchecker,paste,searchreplace",
+#     'theme': "advanced",
+#     'theme_advanced_toolbar_location':"top",
+#     'cleanup_on_startup': True,
+# }
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
@@ -122,3 +140,8 @@ STATIC_URL = '/static/'
 PREFIX_PIC_URL = "http://7xnlkv.com1.z0.glb.clouddn.com"
 QINIU_ACCESS_KEY = 'PrQewmUAVLk9Uhn4fQI00P8smWlg4KuiF3XVbmzq'
 QINIU_SECRET_KEY = 'KOlsmA10-zKUnU2uwFDSl-Sn1OCKrFp15cZW7ysD'
+
+
+MEDIA_URL = '/uploads/'
+rel = lambda *x: os.path.join(os.path.dirname(os.path.abspath(__file__)), *x)
+MEDIA_ROOT = rel('../uploads')

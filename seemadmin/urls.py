@@ -20,4 +20,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^seems/', include('apps.seems.urls')),    # seems 查询
+    url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^mce_filebrowser/', include('mce_filebrowser.urls')),
 ]

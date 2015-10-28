@@ -49,7 +49,7 @@ def get_project_info(request):
         pro_dict = {
             'id': proj.id,
             'title': proj.title,
-            'descr': proj.descr,
+            'descr': render_content_html(proj.descr),
             'img': proj.img,
             'ptype': proj.ptype,
             'status': proj.status,
@@ -82,7 +82,7 @@ def news_list(request):
             news_dict = {
                 'id': news.id,
                 'title': news.title,
-                'content': news.content,
+                'content': render_content_html(news.content),
                 'img': news.img,
                 'status': news.status,
                 'create_time': news.create_time,
@@ -104,10 +104,20 @@ def author_list(request):
                 'id': author.id,
                 'nickname': author.nickname,
                 'english_name': author.english_name,
-                'descr': author.descr,
+                'descr': render_content_html(author.descr),
                 'author_type': author.author_type,
             }
             ret.append(author_dict)
         return success(ret)
 
+
+def render_content_html(content):
+    parts = content.split('\r\n')
+    ret = ""
+    for p in parts:
+        if p.startswith('http'):
+            ret += '<img src="%s" alt="">' % p
+        else:
+            ret += '<p>%s</p>' % p
+    return ret
 

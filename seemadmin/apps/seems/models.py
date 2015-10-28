@@ -7,7 +7,6 @@ STATUS_CHOICES = (
     (1, '有效'),
 )
 
-
 class Author(models.Model):
 
     TYPE_CHOICES = (
@@ -17,7 +16,8 @@ class Author(models.Model):
     id = models.AutoField(primary_key=True)
     nickname = models.CharField('作者名称', max_length=20)
     english_name = models.CharField('英文名', max_length=50)
-    descr = models.CharField('作者简介', max_length=5000)
+    descr = models.TextField('作者简介', max_length=5000)
+    # descr = HTMLField('作者简介', max_length=5000)
     avatar = models.CharField('作者头像', max_length=500)
     author_type = models.IntegerField('作者类型', choices=TYPE_CHOICES, default=0)
     status = models.IntegerField('设计师状态', choices=STATUS_CHOICES, default=1)
@@ -41,7 +41,7 @@ class Projects(models.Model):
 
     id = models.AutoField(primary_key=True)
     title = models.CharField('项目名称', max_length=50)
-    descr = models.CharField('项目内容', max_length=5000)
+    descr = models.TextField('项目内容', max_length=5000)
     img = models.CharField('项目头图', max_length=200)
     ptype = models.IntegerField('项目类型', choices=PTYPE_CHOICES, default=1)
     status = models.IntegerField('项目状态', choices=STATUS_CHOICES, default=1)
@@ -58,7 +58,7 @@ class News(models.Model):
 
     id = models.AutoField(primary_key=True)
     title = models.CharField('新闻名称', max_length=50)
-    content = models.CharField('新闻内容', max_length=5000)
+    content = models.TextField('新闻内容', max_length=5000)
     img = models.CharField('新闻头图', max_length=200)
     status = models.IntegerField('新闻状态', choices=STATUS_CHOICES, default=1)
     create_time = models.DateTimeField(auto_now_add=True)

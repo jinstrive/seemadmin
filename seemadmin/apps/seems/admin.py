@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 from django.contrib import admin
 from .models import Projects, Author, News, CdnMedia
+from .forms import AuthorAdminForm
 import time
 from utils import qiniu_upload
 import copy
@@ -11,6 +12,8 @@ class AuthorAdmin(admin.ModelAdmin):
     list_filter = ['status']
     search_fields = ['nickname']
     list_display = ('id', 'nickname', 'english_name', 'status', 'create_time', 'update_time')
+
+    form = AuthorAdminForm
 
 
 @admin.register(Projects)
