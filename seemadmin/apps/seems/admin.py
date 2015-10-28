@@ -13,8 +13,6 @@ class AuthorAdmin(admin.ModelAdmin):
     search_fields = ['nickname']
     list_display = ('id', 'nickname', 'english_name', 'status', 'create_time', 'update_time')
 
-    form = AuthorAdminForm
-
 
 @admin.register(Projects)
 class ProjectsAdmin(admin.ModelAdmin):
