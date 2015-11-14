@@ -68,3 +68,4 @@ CREATE TABLE `cdn_image` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8
 
+alter table projects add column `weight` tinyint(2) DEFAULT 0 after status;

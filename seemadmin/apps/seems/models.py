@@ -45,6 +45,7 @@ class Projects(models.Model):
     img = models.CharField('项目头图', max_length=200)
     ptype = models.IntegerField('项目类型', choices=PTYPE_CHOICES, default=1)
     status = models.IntegerField('项目状态', choices=STATUS_CHOICES, default=1)
+    weight = models.IntegerField('项目权重', default=0)
     create_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now_add=True)
 
