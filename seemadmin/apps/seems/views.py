@@ -104,6 +104,7 @@ def author_list(request):
                 'id': author.id,
                 'nickname': author.nickname,
                 'english_name': author.english_name,
+                'avatar': author.avatar,
                 'descr': render_content_html(author.descr),
                 'author_type': author.author_type,
             }
