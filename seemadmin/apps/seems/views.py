@@ -13,7 +13,13 @@ def all_pro_info(request):
     if request.method == 'GET':
         page_num = request.GET.get('page_num', 1)
         page_size = request.GET.get('page_size', 10)
-        pros = Projects.objects.filter(status=1).order_by('-weight', '-create_time').all()
+        ptype = int(request.GET.get('ptype', 0) or 0)
+        params = {
+            'status': 1
+        }
+        if ptype:
+            params['ptype'] = ptype
+        pros = Projects.objects.filter(**params).order_by('-weight', '-create_time').all()
         paginator = Paginator(pros, int(page_size))
         try:
             projects = paginator.page(int(page_num))
