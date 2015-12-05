@@ -11,6 +11,7 @@ class Author(models.Model):
 
     TYPE_CHOICES = (
         (0, '设计师'),
+        (1, '客户主管'),
     )
 
     id = models.AutoField(primary_key=True)
