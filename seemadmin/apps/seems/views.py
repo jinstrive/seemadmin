@@ -4,7 +4,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.csrf import csrf_exempt
 from utils import error, QFRET, success
-from .models import Projects, News, Author
+from .models import Projects, News, Author, Banners
 
 
 @csrf_protect
@@ -117,6 +117,27 @@ def author_list(request):
                 'author_eng_title': 'DESIGNER' if author.author_type == 0 else 'CLIENT MASTER',
             }
             ret.append(author_dict)
+        return success(ret)
+
+
+@csrf_protect
+@csrf_exempt
+def banner_list(request):
+    if request.method == 'GET':
+        params = {
+            'status': 1
+        }
+        banners = Banners.objects.filter(**params).order_by('-weight', '-create_time').all()
+
+        ret = []
+        for b in banners:
+            b_dict = {
+                'id': b.id,
+                'img': b.img,
+                'link': b.link or '#',
+                'status': b.status,
+            }
+            ret.append(b_dict)
         return success(ret)
 
 

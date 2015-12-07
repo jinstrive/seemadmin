@@ -68,4 +68,17 @@ CREATE TABLE `cdn_image` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8
 
+
+CREATE TABLE `banners` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `link` varchar(200) DEFAULT NULL,
+  `img` varchar(500) DEFAULT NULL,
+  `status` tinyint(2) DEFAULT 1,
+  `weight` tinyint(2) DEFAULT 0,
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
 alter table projects add column `weight` tinyint(2) DEFAULT 0 after status;
+alter table banners add column `weight` tinyint(2) DEFAULT 0 after status;

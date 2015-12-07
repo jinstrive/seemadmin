@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 from django.contrib import admin
-from .models import Projects, Author, News, CdnMedia
+from .models import Projects, Author, News, CdnMedia, Banners
 from .forms import AuthorAdminForm
 import time
 from utils import qiniu_upload
@@ -12,6 +12,12 @@ class AuthorAdmin(admin.ModelAdmin):
     list_filter = ['status']
     search_fields = ['nickname']
     list_display = ('id', 'nickname', 'english_name', 'status', 'create_time', 'update_time')
+
+
+@admin.register(Banners)
+class BannersAdmin(admin.ModelAdmin):
+    list_filter = ['status']
+    list_display = ('id', 'link', 'img', 'weight', 'status', 'create_time', 'update_time')
 
 
 @admin.register(Projects)

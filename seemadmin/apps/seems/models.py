@@ -15,11 +15,10 @@ class Author(models.Model):
     )
 
     id = models.AutoField(primary_key=True)
-    nickname = models.CharField('作者名称', max_length=20)
-    english_name = models.CharField('英文名', max_length=50)
-    descr = models.TextField('作者简介', max_length=5000)
-    # descr = HTMLField('作者简介', max_length=5000)
-    avatar = models.CharField('作者头像', max_length=500)
+    nickname = models.CharField('作者名称', default='', max_length=20)
+    english_name = models.CharField('英文名', default='', max_length=50)
+    descr = models.TextField('作者简介', default='', max_length=5000)
+    avatar = models.CharField('作者头像', default='', max_length=500)
     author_type = models.IntegerField('作者类型', choices=TYPE_CHOICES, default=0)
     status = models.IntegerField('设计师状态', choices=STATUS_CHOICES, default=1)
     create_time = models.DateTimeField(auto_now_add=True)
@@ -70,6 +69,22 @@ class News(models.Model):
         db_table = 'news'
         verbose_name = '新闻'
         verbose_name_plural = verbose_name
+
+
+class Banners(models.Model):
+    id = models.AutoField(primary_key=True)
+    link = models.CharField('banner 链接', blank=True, max_length=200)
+    img = models.CharField('banner 图片地址', max_length=500)
+    status = models.IntegerField('banner状态', choices=STATUS_CHOICES, default=1)
+    weight = models.IntegerField('banner权重', default=0)
+    create_time = models.DateTimeField(auto_now_add=True)
+    update_time = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'banners'
+        verbose_name = 'Banner'
+        verbose_name_plural = verbose_name
+
 
 
 def path_gen(instance, filename):
