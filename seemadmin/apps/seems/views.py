@@ -71,7 +71,7 @@ def news_list(request):
     if request.method == 'GET':
         page_num = request.GET.get('page_num', 1)
         page_size = request.GET.get('page_size', 10)
-        news_query = News.objects.filter(status=1).all()
+        news_query = News.objects.filter(status=1).order_by('-create_time').all()
         paginator = Paginator(news_query, int(page_size))
         try:
             news_list = paginator.page(int(page_num))
