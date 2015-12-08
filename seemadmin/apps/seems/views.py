@@ -114,7 +114,7 @@ def author_list(request):
                 'descr': render_content_html(author.descr),
                 'author_type': author.author_type,
                 'author_title': '设计师' if author.author_type == 0 else '客户主管',
-                'author_eng_title': 'DESIGNER' if author.author_type == 0 else 'CLIENT MASTER',
+                'author_eng_title': 'Design' if author.author_type == 0 else 'Client Master',
             }
             ret.append(author_dict)
         return success(ret)
